@@ -1,7 +1,8 @@
 input[type=text]{
   border: none;
   text-align: center;
-  font-size: 20px;
   width: 100%;
+  font-size: 15px;
+  background-color: #f3f3f3;
   border-bottom: 2px solid #999;
 }

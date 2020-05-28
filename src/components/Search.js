@@ -29,10 +29,10 @@ export default class Search extends React.Component {
     if (this.state.input.length < 3)
       h3Style.border = "1px solid red"
 
-    const style = {width: "21px"}
     return (
       <div>
         <input type="text" className="search" placeholder="search" onChange={this.handleChange__} />
+        <br/>
         { this.state.input.length > 2 &&
         <GetResults site_id={this.props.site_id} stringSearch={this.state.input}/>
         }

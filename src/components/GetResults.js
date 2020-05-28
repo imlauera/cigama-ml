@@ -28,10 +28,15 @@ export default class GetResults extends React.Component {
   render(){
     let liStyle = {
       marginTop: '5px',
-      border: '1px solid #eee',
+      border: '1px solid #999',
       padding: '5px',
       listStyleType: 'none',
-      fontSize: 16
+      fontSize: 16,
+      backgroundColor: '#f9f9f9'
+    };
+    let acolor = {
+      backgroundColor: '#e9e9e9',
+      color: 'white'
     };
     const productos = this.state.productos
     console.log(productos)
@@ -47,7 +52,7 @@ export default class GetResults extends React.Component {
         <p>Acepta MercadoPago: {item.accepts_mercadopago === true ? <b>si</b> : <b style={{color: 'red'}}>no</b>}</p>
         {/*<p>{item.installments.quantity} cuotas de {item.installments.amount}</p>*/}
         <p>Envio gratis: {item.shipping.free_shipping === true ? <b>si</b> : <b style={{color: 'red'}}>no</b>}</p>
-        <center><p><a href={item.permalink} target="_blank">Ver</a></p></center>
+        <center><p style={acolor}><a href={item.permalink}>Ver</a></p></center>
 
       </li>
 		);  
