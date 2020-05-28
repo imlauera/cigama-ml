@@ -52,7 +52,7 @@ export default class GetResults extends React.Component {
         <p>Acepta MercadoPago: {item.accepts_mercadopago === true ? <b>si</b> : <b style={{color: 'red'}}>no</b>}</p>
         {/*<p>{item.installments.quantity} cuotas de {item.installments.amount}</p>*/}
         <p>Envio gratis: {item.shipping.free_shipping === true ? <b>si</b> : <b style={{color: 'red'}}>no</b>}</p>
-        <center><p style={acolor}><a href={item.permalink}>Ver</a></p></center>
+        <center><p style={acolor}><a href={item.permalink} target="_blank">Ver</a></p></center>
 
       </li>
 		);  
