@@ -16,24 +16,37 @@ export default class GetProducts extends React.Component {
     const site_id = this.props.site_id
     const category_id = this.props.category_id
     console.log(site_id)
-    axios.get(`https://api.mercadolibre.com/sites/${site_id}/search?category=${category_id}&limit=5`)
+    this._asyncRequest = 
+    axios.get(`https://api.mercadolibre.com/sites/${site_id}/search?category=${category_id}&limit=3`)
       .then(res => {
         const productos = res.data.results;
         this.setState({ productos });
     });
   }
+  componentWillUnmount(){
+    if (this._asyncRequest){
+      this.asyncRequest.cancel();
+    }
+
+  }
   render(){
     let liStyle = { 
-      border: '1px solid black',
-      margin: 10
+      margin: 10,
+      fontSize: 12
     };  
     const productos = this.state.productos
     console.log(productos)
     const listitems = productos.map( (item) => 
-      <li style={liStyle} key={item.id+1}><p>${item.price}</p><img alt="thumbnail" src={item.thumbnail}/>{item.title}</li>
+      <li style={liStyle} key={item.id+1}>
+        <div className="card">
+          <div className="text">
+            {item.price} {item.title}
+          </div>
+        <img alt="thumbnail" src={item.thumbnail}/></div>
+      </li>
     );
     return(
-      <ul>
+      <ul className="projects-grid">
         {listitems}
       </ul>
     );

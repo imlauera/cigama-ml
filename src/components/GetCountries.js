@@ -4,6 +4,7 @@ import React from 'react';
 import axios from 'axios';
 import GetCategories from './GetCategories';
 import Search from './Search';
+import './GetCountries.css'
 
 export default class GetCountries extends React.Component {
   constructor(props){
@@ -46,7 +47,7 @@ export default class GetCountries extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit_}>
-          <select defaultValue={'default'} onChange={this.handleChange_}>
+          <select className="select-selected" defaultValue={'default'} onChange={this.handleChange_}>
             <option value="default" disabled defaultValue>Seleccioná tu país</option>
             {listitems}
           </select>
@@ -58,6 +59,7 @@ export default class GetCountries extends React.Component {
 					<div>
             <p>dos veces</p>
 						<Search site_id={selectedCountry}/>
+            <hr/>
 						<h3>Categorías:</h3>
             <GetCategories site_id={selectedCountry} />
 					</div>

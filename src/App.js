@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import GetCountries from './components/GetCountries';
+import GetProducts from './components/GetProducts';
 import Search from './components/Search';
 
 
@@ -20,6 +21,7 @@ class App extends React.Component {
       <div className="logo">
         Cigama
       </div>
+      <hr/>
 			<GetCountries />
     </div>
 
