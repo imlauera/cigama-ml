@@ -8,6 +8,9 @@ export default class GetCategories extends React.Component {
       categorias: []
     };
   }
+  componentDidUpdate(){
+    this.GetList();
+  }
   componentDidMount(){
     this.GetList();
   }
@@ -25,9 +28,7 @@ export default class GetCategories extends React.Component {
     };
     const categorias = this.state.categorias
     const items = categorias.map( (item) => 
-      <div>
-      <li style={liStyle} key={item.id+1}>{item.name} {item.id}</li>
-      </div>
+      <li style={liStyle} key={item.name+1}>{item.name} {item.id}</li>
     );
     return(
       <ul>

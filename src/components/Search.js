@@ -1,4 +1,6 @@
 /*
+Entre search y getresults generan un bucle infinito.
+
 Para hacer el search tenés que hacer un controlled input
 que te pida por lo menos 3 letras para hacer la consulta a la api
 cada vez que escribe una letra hace una consulta a la api.
@@ -12,16 +14,16 @@ export default class Search extends React.Component {
     this.state = {
       input: '',
     };
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange__ = this.handleChange__.bind(this)
   }
-  handleChange(event) {
+  handleChange__(event) {
     this.setState({
       input: event.target.value
     });
   }
   render(){
     let h3Style = {
-      border: '1px solid black'
+      border: 'none'
     };
     if (this.state.input.length < 3)
       h3Style.border = "1px solid red"
@@ -29,13 +31,9 @@ export default class Search extends React.Component {
     const style = {width: "21px"}
     return (
       <div>
-        <input placeholder="search" onChange={this.handleChange} style={{style}} />
-        {
-          this.state.input.length > 1 && 
-            <div>
-            <h3 style={h3Style}>searching: {this.state.input}</h3>
-            <GetResults site_id={this.props.site_id} stringSearch={this.state.input} />
-            </div>
+        <input placeholder="search" onChange={this.handleChange__} />
+        { this.state.input.length > 2 &&
+        <GetResults site_id={this.props.site_id} stringSearch={this.state.input}/>
         }
       </div>
     );

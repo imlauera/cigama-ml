@@ -19,8 +19,11 @@ export default class GetResults extends React.Component {
         this.setState({ productos });
       })
   }
-  componentDidUpdate(){
-    this.GetSearchResultsList()
+  componentDidMount(){
+    document.addEventListener("keyup",this.GetSearchResultsList)
+  }
+  componentWillUnmount(){
+    document.removeEventListener("keyup",this.GetSearchResultsList)
   }
   render(){
     let liStyle = {
@@ -29,7 +32,7 @@ export default class GetResults extends React.Component {
     };
     const productos = this.state.productos
 		const listitems = productos.map( (item) =>  
-			<div style={liStyle}><li key={item.id+1}><p>${item.price}</p><img alt="thumbnail" src={item.thumbnail}/>{item.title}</li></div>
+			<li key={item.id+1}><p>${item.price}</p><img alt="thumbnail" src={item.thumbnail}/>{item.title}</li>
 		);  
     return (
       <ul>

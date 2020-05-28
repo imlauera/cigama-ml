@@ -1,7 +1,8 @@
+/* this file contain a bug, find it.*/
+
 import React from 'react';
 import axios from 'axios';
 import GetCategories from './GetCategories';
-import GetProducts from './GetProducts';
 import Search from './Search';
 
 export default class GetCountries extends React.Component {
@@ -12,8 +13,8 @@ export default class GetCountries extends React.Component {
       countryChange: '',
       selectedCountry: ''
     };
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange_ = this.handleChange_.bind(this)
+    this.handleSubmit_ = this.handleSubmit_.bind(this)
   }
   GetCountryList() {
     axios.get(`https://api.mercadolibre.com/sites/`)
@@ -26,12 +27,12 @@ export default class GetCountries extends React.Component {
     this.GetCountryList();
   }
 
-  handleChange(event) {
+  handleChange_(event) {
     this.setState({
       countryChange: event.target.value
     });
   }
-  handleSubmit(event){
+  handleSubmit_(event){
     event.preventDefault()
     this.setState( state => ({
       selectedCountry: state.countryChange
@@ -39,26 +40,26 @@ export default class GetCountries extends React.Component {
   }
   render(){
     const countries = this.state.countries;
-		// console.log(countries)
+		console.log(countries)
     const listitems = countries.map((country) => <option key={country.id+1} value={country.id}>{country.name}</option>);
     const { selectedCountry } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <select defaultValue={'default'} onChange={this.handleChange}>
+        <form onSubmit={this.handleSubmit_}>
+          <select defaultValue={'default'} onChange={this.handleChange_}>
             <option value="default" disabled defaultValue>Seleccioná tu país</option>
             {listitems}
           </select>
-          <input type="submit" value="Cambiar"/>
+          <input type="submit" value="Cambiar" />
         </form>
-        <p>{this.state.selectedCountry}</p>
+        <p>{selectedCountry}</p>
         {
           selectedCountry &&
 					<div>
+            <p>dos veces</p>
 						<Search site_id={selectedCountry}/>
 						<h3>Categorías:</h3>
-						<GetCategories site_id={selectedCountry} />
-						<GetProducts  site_id={selectedCountry} />
+            <GetCategories site_id={selectedCountry} />
 					</div>
         }
       </div>
