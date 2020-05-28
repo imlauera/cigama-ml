@@ -1,0 +1,34 @@
+curl https://api.mercadolibre.com/sites
+curl https://api.mercadolibre.com/sites/MLA/listing_types
+categorias: curl https://api.mercadolibre.com/$SITE_ID/MLA/categories
+
+curl https://api.mercadolibre.com/sites/MLA/categories
+curl https://api.mercadolibre.com/categories/MLA1744/attributes
+curl https://api.mercadolibre.com/sites/MLA/all
+curl https://api.mercadolibre.com/sites/MLA/search?q=ipodnano&limit=3
+offset sirve para mover el límite inferior
+curl https://api.mercadolibre.com/sites/MLA/search?q=ipodnano&offset=50
+curl https://api.mercadolibre.com/sites/MLA/search?q=ipodnano&offset=3&limit=3
+curl https://api.mercadolibre.com/sites/MLA/search?nickname=Garbarino
+curl https://api.mercadolibre.com/sites/$SITE_ID/search?seller_id=$SELLER_ID
+ordenar: curl https://api.mercadolibre.com/sites/$SITE_ID/search?seller_id=$SELLER_ID&sort=price_asc
+filtrar: curl https://api.mercadolibre.com/sites/$SITE_ID/search?seller_id=$SELLER_ID&shipping=free
+
+curl https://api.mercadolibre.com/sites/MLA/search?category=MLA1055
+curl https://api.mercadolibre.com/sites/$SITE_ID/search?seller_id=$SELLER_ID&category=$CATEGORY_ID
+/sites/$SITE_ID/search?category=$CATEGORY_ID
+----
+shipments: curl https://api.mercadolibre.com/items/MLA609927611/shipping_options
+https://api.mercadolibre.com/items/MLA723647586/shipping_options?zip_code=5000&dimensions=10x10x20,500
+----
+multiget: curl https://api.mercadolibre.com/items?ids=MLA599260060,MLA594239600&access_token=$ACCESS_TOKEN
+https://api.mercadolibre.com/users?ids=401114259,287440999
+----
+opiniones: https://api.mercadolibre.com/reviews/item/MLA723647586
+preguntas: https://api.mercadolibre.com/questions/search?item=MLA723647586
+
+
+moneda: https://api.mercadolibre.com/currency_conversions/search?from=ARS&to=USD
+
+zip code: https://api.mercadolibre.com/countries/AR/zip_codes/2000
+limit: curl "https://api.mercadolibre.com/sites/MLA/search?category=MLA1648&limit=1" | jq .
