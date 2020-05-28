@@ -57,7 +57,6 @@ export default class GetCountries extends React.Component {
         {
           selectedCountry &&
 					<div>
-            <p>dos veces</p>
 						<Search site_id={selectedCountry}/>
             <hr/>
 						<h3>Categorías:</h3>

@@ -27,12 +27,29 @@ export default class GetResults extends React.Component {
   }
   render(){
     let liStyle = {
-      border: '1px solid black',
-      margin: '3px'
+      border: '1px solid #eee',
+      margin: '2px',
+      padding: '5px',
+      listStyleType: 'none',
+      fontSize: 12
     };
     const productos = this.state.productos
+    console.log(productos)
 		const listitems = productos.map( (item) =>  
-			<li key={item.id+1}><p>${item.price}</p><img alt="thumbnail" src={item.thumbnail}/>{item.title}</li>
+			<li key={item.id+1} style={liStyle} >
+        <img alt="thumbnail" src={item.thumbnail}/><br/>
+        {item.title}
+        <p>price: ${item.price}. Moneda: {item.currency_id}</p>
+        <p>stock: {item.available_quantity}</p>
+        <p><b>Información del vendedor: </b></p>
+        <p>status: {item.seller.power_seller_status}</p>
+        {/*<p>Página: <a href={item.seller.permalink}>{item.eshop.nick_name}</a></p>*/}
+        <p>Acepta MercadoPago: {item.accepts_mercadopago}</p>
+        {/*<p>{item.installments.quantity} cuotas de {item.installments.amount}</p>*/}
+        <p>Envio gratis: {item.shipping.free_shipping === true ? <b>si</b> : <b>no</b>}</p>
+        <p><a href={item.permalink}>Ver</a></p>
+
+      </li>
 		);  
     return (
       <ul>
