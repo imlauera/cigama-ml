@@ -46,6 +46,7 @@ hr {
 body {
   padding: 0;
   margin: 5em auto;
+  margin-top: 10px;
   background: #fff;
   font-family: 'Courier New';
   color: black;

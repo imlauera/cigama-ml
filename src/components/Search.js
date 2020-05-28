@@ -7,6 +7,7 @@ cada vez que escribe una letra hace una consulta a la api.
 */
 import React from 'react';
 import GetResults from './GetResults';
+import './Search.css';
 
 export default class Search extends React.Component {
   constructor(props){
@@ -31,7 +32,7 @@ export default class Search extends React.Component {
     const style = {width: "21px"}
     return (
       <div>
-        <input placeholder="search" onChange={this.handleChange__} />
+        <input type="text" className="search" placeholder="search" onChange={this.handleChange__} />
         { this.state.input.length > 2 &&
         <GetResults site_id={this.props.site_id} stringSearch={this.state.input}/>
         }

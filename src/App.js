@@ -21,7 +21,7 @@ class App extends React.Component {
       <div className="logo">
         Cigama
       </div>
-      <hr/>
+      <hr/><br/><br/>
 			<GetCountries />
     </div>
 

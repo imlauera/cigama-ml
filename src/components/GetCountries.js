@@ -53,12 +53,11 @@ export default class GetCountries extends React.Component {
           </select>
           <input type="submit" value="Cambiar" />
         </form>
-        <p>{selectedCountry}</p>
         {
           selectedCountry &&
 					<div>
+            <br/>
 						<Search site_id={selectedCountry}/>
-            <hr/>
 						<h3>Categorías:</h3>
             <GetCategories site_id={selectedCountry} />
 					</div>
