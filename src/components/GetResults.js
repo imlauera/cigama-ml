@@ -62,7 +62,7 @@ export default class GetResults extends React.Component {
       <ul>
         {
           this.state.isLoading
-          ? <h4>Loading ...</h4>
+          ? <h4>Cargando ...</h4>
           : listitems
         }
       </ul>
