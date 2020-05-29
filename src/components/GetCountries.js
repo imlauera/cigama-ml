@@ -43,7 +43,7 @@ export default class GetCountries extends React.Component {
     const countries = this.state.countries;
 		console.log(countries)
     const listitems = countries.map((country) => <option key={country.id+1} value={country.id}>{country.name}</option>);
-    const { selectedCountry } = this.state;
+    const selectedCountry = this.state.countryChange;
     return (
       <div>
         <form onSubmit={this.handleSubmit_}>
@@ -51,7 +51,6 @@ export default class GetCountries extends React.Component {
             <option value="default" disabled defaultValue>Seleccioná tu país</option>
             {listitems}
           </select>
-          <input type="submit" value="Cambiar" />
         </form>
         {
           selectedCountry &&
