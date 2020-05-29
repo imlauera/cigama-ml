@@ -46,7 +46,7 @@ export default class Search extends React.Component {
         <input type="text" className="search" placeholder="search" onChange={this.handleChange__} />
         </form>
         <br/>
-        { this.state.typing 
+        { this.state.typing  
         ? <p>Escribiendo ...</p>
         : <GetResults site_id={this.props.site_id} stringSearch={this.state.submit}/>
         }

@@ -6,14 +6,19 @@ export default class GetResults extends React.Component {
     super(props);
     this.state = ({
       productos: [],
-      isLoading: true
+      isLoading: true,
+      indexComienzo: 0,
+      itemsCargar: 5
     });
     this.GetSearchResultsList = this.GetSearchResultsList.bind(this)
+    this.loadMore = this.loadMore.bind(this)
   }
   GetSearchResultsList() {
     const stringSearch = this.props.stringSearch
     const site_id = this.props.site_id
-    axios.get(`https://api.mercadolibre.com/sites/${site_id}/search?q=${stringSearch}&limit=20`)
+    const itemsCargar = this.state.itemsCargar
+    const indexComienzo = this.state.indexComienzo
+    axios.get(`https://api.mercadolibre.com/sites/${site_id}/search?q=${stringSearch}&offset=${indexComienzo}&limit=${itemsCargar}`)
       .then(res => {
         if (this.unmounted) return ;
         const productos = res.data.results;
@@ -29,6 +34,13 @@ export default class GetResults extends React.Component {
   }
   componentWillUnmount(){
     this.unmounted = true;
+  }
+  loadMore(){
+    this.setState( (state) => ({
+      itemsCargar: state.itemsCargar+5,
+    }), () => {
+      this.GetSearchResultsList();
+    });
   }
   render(){
     let liStyle = {
@@ -59,13 +71,19 @@ export default class GetResults extends React.Component {
       </li>
 		);  
     return (
-      <ul>
+      <div>
         {
           this.state.isLoading
-          ? <h4>Cargando ...</h4>
-          : listitems
+          ? <p>Cargando ...</p>
+          :
+          <div>
+            <ul>
+                {listitems}
+            </ul>
+            <button onClick={this.loadMore}>Más</button>
+          </div>
         }
-      </ul>
+      </div>
     );
   }
 }
