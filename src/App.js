@@ -5,7 +5,6 @@ import GetCountries from './components/GetCountries';
 
 class App extends React.Component {
   render(){
-		// acá se ejecuta JS.
     return (
     <div className="container">
 			<GetCountries />
