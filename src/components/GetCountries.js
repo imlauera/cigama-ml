@@ -56,6 +56,7 @@ export default class GetCountries extends React.Component {
         {
           selectedCountry &&
 					<div>
+            <p>Ahora estás buscando en <b>{selectedCountry}</b></p>
             <br/>
             <a className="logo">Cigama</a>
             <Search site_id={selectedCountry}/>
