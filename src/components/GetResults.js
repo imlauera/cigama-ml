@@ -20,10 +20,7 @@ export default class GetResults extends React.Component {
       })
   }
   componentDidMount(){
-    document.addEventListener("keyup",this.GetSearchResultsList)
-  }
-  componentWillUnmount(){
-    document.removeEventListener("keyup",this.GetSearchResultsList)
+    this.GetSearchResultsList()
   }
   render(){
     let liStyle = {
@@ -39,7 +36,6 @@ export default class GetResults extends React.Component {
       color: 'white'
     };
     const productos = this.state.productos
-    console.log(productos)
 		const listitems = productos.map( (item) =>  
 			<li key={item.id+1} style={liStyle} >
         <img alt="thumbnail" src={item.thumbnail}/>
