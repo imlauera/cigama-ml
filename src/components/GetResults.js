@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+/*TODO: Implementar de una forma más eficiente el loadMore*/
+
 export default class GetResults extends React.Component {
   constructor(props){
     super(props);
@@ -78,9 +80,9 @@ export default class GetResults extends React.Component {
           :
           <div>
             <ul>
-                {listitems}
+              {listitems}
+              {listitems.length !== 0 && <center><button onClick={this.loadMore}>Cargar Más</button></center>}
             </ul>
-            <button onClick={this.loadMore}>Más</button>
           </div>
         }
       </div>
