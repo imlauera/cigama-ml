@@ -14,12 +14,20 @@ export default class Search extends React.Component {
     super(props);
     this.state = {
       input: '',
+      submit: ''
     };
     this.handleChange__ = this.handleChange__.bind(this)
+    this.handleSubmit__ = this.handleSubmit__.bind(this)
   }
   handleChange__(event) {
     this.setState({
       input: event.target.value
+    });
+  }
+  handleSubmit__(event){
+    event.preventDefault()
+    this.setState({
+      submit: this.state.input
     });
   }
   render(){
@@ -31,10 +39,12 @@ export default class Search extends React.Component {
 
     return (
       <div>
+        <form onSubmit={this.handleSubmit__}>
         <input type="text" className="search" placeholder="search" onChange={this.handleChange__} />
+        </form>
         <br/>
-        { this.state.input.length > 2 &&
-        <GetResults site_id={this.props.site_id} stringSearch={this.state.input}/>
+        { this.state.input == this.state.submit &&
+        <GetResults site_id={this.props.site_id} stringSearch={this.state.submit}/>
         }
       </div>
     );

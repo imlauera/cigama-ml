@@ -1,6 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 
+/*
+Agregar un select de categorías si eligue una
+mostrá 5 productos de esa categoría.
+*/
+
 export default class GetCategories extends React.Component {
   constructor(props){
     super(props);
