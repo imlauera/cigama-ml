@@ -33,7 +33,7 @@ export default class GetCategories extends React.Component {
     };
     const categorias = this.state.categorias
     const items = categorias.map( (item) => 
-      <li style={liStyle} key={item.name+1}>{item.name} {item.id}</li>
+      <li style={liStyle} key={item.name+1}>{item.name}</li>
     );
     return(
       <ul>

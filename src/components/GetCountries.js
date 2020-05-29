@@ -15,7 +15,6 @@ export default class GetCountries extends React.Component {
       selectedCountry: ''
     };
     this.handleChange_ = this.handleChange_.bind(this)
-    this.handleSubmit_ = this.handleSubmit_.bind(this)
   }
   GetCountryList() {
     axios.get(`https://api.mercadolibre.com/sites/`)
@@ -33,12 +32,6 @@ export default class GetCountries extends React.Component {
       countryChange: event.target.value
     });
   }
-  handleSubmit_(event){
-    event.preventDefault()
-    this.setState( state => ({
-      selectedCountry: state.countryChange
-    }));
-  }
   render(){
     const countries = this.state.countries;
 		console.log(countries)
@@ -46,7 +39,7 @@ export default class GetCountries extends React.Component {
     const selectedCountry = this.state.countryChange;
     return (
       <div>
-        <form onSubmit={this.handleSubmit_}>
+        <form>
           <select className="select-selected" defaultValue={'default'} onChange={this.handleChange_}>
             <option value="default" disabled defaultValue>Seleccioná tu país</option>
             {listitems}

@@ -1,10 +1,3 @@
-/*
-Entre search y getresults generan un bucle infinito.
-
-Para hacer el search tenés que hacer un controlled input
-que te pida por lo menos 3 letras para hacer la consulta a la api
-cada vez que escribe una letra hace una consulta a la api.
-*/
 import React from 'react';
 import GetResults from './GetResults';
 import './Search.css';
@@ -43,7 +36,7 @@ export default class Search extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit__}>
-        <input type="text" className="search" placeholder="search" onChange={this.handleChange__} />
+        <input type="text" className="search" placeholder="Buscar productos" onChange={this.handleChange__} />
         </form>
         <br/>
         { this.state.typing  
