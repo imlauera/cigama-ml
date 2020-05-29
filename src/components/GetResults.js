@@ -5,22 +5,30 @@ export default class GetResults extends React.Component {
   constructor(props){
     super(props);
     this.state = ({
-      productos: []
+      productos: [],
+      isLoading: true
     });
     this.GetSearchResultsList = this.GetSearchResultsList.bind(this)
   }
   GetSearchResultsList() {
     const stringSearch = this.props.stringSearch
     const site_id = this.props.site_id
-    console.log(`este es el sitio ${site_id}`)
     axios.get(`https://api.mercadolibre.com/sites/${site_id}/search?q=${stringSearch}&limit=20`)
       .then(res => {
+        if (this.unmounted) return ;
         const productos = res.data.results;
-        this.setState({ productos });
+        this.setState({
+          productos,
+          isLoading: false 
+        });
       })
+      .catch(error => this.setState({ error, isLoading: false }));
   }
   componentDidMount(){
     this.GetSearchResultsList()
+  }
+  componentWillUnmount(){
+    this.unmounted = true;
   }
   render(){
     let liStyle = {
@@ -48,12 +56,15 @@ export default class GetResults extends React.Component {
         {/*<p>{item.installments.quantity} cuotas de {item.installments.amount}</p>*/}
         <p>Envio gratis: {item.shipping.free_shipping === true ? <b>si</b> : <b style={{color: 'red'}}>no</b>}</p>
         <center><p style={acolor}><a href={item.permalink} target="_blank">Ver</a></p></center>
-
       </li>
 		);  
     return (
       <ul>
-				{listitems}
+        {
+          this.state.isLoading
+          ? <h4>Loading ...</h4>
+          : listitems
+        }
       </ul>
     );
   }
