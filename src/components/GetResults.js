@@ -58,19 +58,20 @@ export default class GetResults extends React.Component {
       color: 'white'
     };
     const productos = this.state.productos
-		const listitems = productos.map( (item) =>  
-			<li key={item.id+1} style={liStyle} >
-        <img alt="thumbnail" src={item.thumbnail}/>
-        {item.title}
-        <p>precio: ${item.price}. Moneda: {item.currency_id}</p>
-        <p>stock: {item.available_quantity}</p>
-        <p><b>Información del vendedor: </b></p>
-        <p>status: {item.seller.power_seller_status === null ? <b>No hay información</b> : <b>{item.seller.power_seller_status}</b> }</p>
-        <p>Acepta MercadoPago: {item.accepts_mercadopago === true ? <b>si</b> : <b style={{color: 'red'}}>no</b>}</p>
-        {/*<p>{item.installments.quantity} cuotas de {item.installments.amount}</p>*/}
-        <p>Envio gratis: {item.shipping.free_shipping === true ? <b>si</b> : <b style={{color: 'red'}}>no</b>}</p>
-        <center><p style={acolor}><a href={item.permalink}>Ver</a></p></center>
-      </li>
+    
+    const listitems = productos.map( (item) =>  
+        <li key={item.id+1} style={liStyle} >
+            <img alt="thumbnail" src={item.thumbnail}/>
+            {item.title}
+            <p>precio: ${item.price}. Moneda: {item.currency_id}</p>
+            <p>stock: {item.available_quantity}</p>
+            <p><b>Información del vendedor: </b></p>
+            <p>status: {item.seller.power_seller_status === null ? <b>No hay información</b> : <b>{item.seller.power_seller_status}</b> }</p>
+            <p>Acepta MercadoPago: {item.accepts_mercadopago === true ? <b>si</b> : <b style={{color: 'red'}}>no</b>}</p>
+            {/*<p>{item.installments.quantity} cuotas de {item.installments.amount}</p>*/}
+            <p>Envio gratis: {item.shipping.free_shipping === true ? <b>si</b> : <b style={{color: 'red'}}>no</b>}</p>
+            <center><p style={acolor}><a href={item.permalink}>Ver</a></p></center>
+       </li>
 		);  
     return (
       <div>

@@ -1,10 +1,17 @@
-/* this file contain a bug, find it.*/
-
 import React from 'react';
 import axios from 'axios';
 import GetCategories from './GetCategories';
 import Search from './Search';
 import './GetCountries.css'
+
+/* Material UI */
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
+
 
 export default class GetCountries extends React.Component {
   constructor(props){
@@ -39,12 +46,21 @@ export default class GetCountries extends React.Component {
     const selectedCountry = this.state.countryChange;
     return (
       <div>
-        <form>
+      <FormControl>
+				<InputLabel id="demo-controlled-open-select-label">Seleccioná tu país</InputLabel>
+        <NativeSelect 
+					style={{fontSize: 30}} onChange={this.handleChange_}>
+          <option aria-label="None" value="" />
+					{listitems}
+        </NativeSelect>
+      </FormControl>
+        {/*<form>
           <select className="select-selected" defaultValue={'default'} onChange={this.handleChange_}>
             <option value="default" disabled defaultValue>Seleccioná tu país</option>
             {listitems}
           </select>
         </form>
+				*/}
         {
           selectedCountry &&
 					<div>
